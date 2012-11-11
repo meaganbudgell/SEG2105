@@ -1,0 +1,4 @@
+DEBUG:root:This message should be in the log file
+INFO:root:So should this
+WARNING:root:And this one
+WARNING:root:variable:this one
