@@ -1,6 +1,6 @@
 from bottle import Bottle, run, template
 from controller import *
-from model import *
+
 
 app=bottle()
 
