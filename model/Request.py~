@@ -1,7 +1,0 @@
-from sqlobject import *
-from sqlobject.inheritance import *
-
-class Request (InheritableSQLObject):
-	notification = ForeignKey('Notification')
-	isApproved = BoolCol(Default=None)
-	
