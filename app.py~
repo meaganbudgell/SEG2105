@@ -8,7 +8,7 @@ connection = connectionForURI("root:scr33m0@localhost/SEG2105")
 sqlhub.processConnection= connection
 
 #Creating DB Tables if DNE
-for i in (Notification, Employee, Request, TimeOff, Shift, Schedule, PersonalSchedule, Store):
+for i in (Notification, Employee, Request, TimeOff, Shift, Day, Schedule, PersonalSchedule, Store):
 	i.createTable(ifNotExists=True)
 
 #Setting up Devel Server

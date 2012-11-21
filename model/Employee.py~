@@ -7,4 +7,3 @@ class Employee(SQLObject):
 	personalSchedule = ForeignKey('PersonalSchedule')
 	masterSchedule = ForeignKey('Schedule')
 	requestList = MutlipleJoin('Request')
-	login = StringCol()
