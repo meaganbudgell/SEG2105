@@ -1,6 +1,7 @@
 from sqlobject import *
+from sqlobject.inheritance import *
 
-class Request (SQLObject):
-	notification = SingleJoin('Notification')
+class Request (InheritableSQLObject):
+	notification = ForeignKey('Notification')
 	isApproved = BoolCol(Default=None)
 	

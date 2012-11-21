@@ -6,7 +6,7 @@ class Employee(SQLObject):
 	notifications = MultipleJoin('Notification')
 	unavailableDays = MultipleJoin('UnavailableDay')
 	masterSchedule = ForeignKey('Schedule')
-	requests = MutlipleJoin('Request')
+	requests = MultipleJoin('Request')
 	login = StringCol()
 
 # Due to how SQLObject works, a class is required to create a table

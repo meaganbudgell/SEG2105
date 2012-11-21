@@ -1,4 +1,7 @@
 from sqlobject import *
+from sqlobject.inheritance import *
+import Request
 
-class TimeOff(Request)
-
+class TimeOff(Request):
+	shifts = MultipleJoin ('Shift')
+	

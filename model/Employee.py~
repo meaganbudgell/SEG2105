@@ -3,10 +3,10 @@ from sqlobject import *
 class Employee(SQLObject):
 	name = StringCol()
 	isManager = BoolCol()
-	notificationList = MultipleJoin('Notification')
-	unavailableList = MultipleJoin('UnavailableDay')
+	notifications = MultipleJoin('Notification')
+	unavailableDays = MultipleJoin('UnavailableDay')
 	masterSchedule = ForeignKey('Schedule')
-	requestList = MutlipleJoin('Request')
+	requests = MutlipleJoin('Request')
 	login = StringCol()
 
 # Due to how SQLObject works, a class is required to create a table

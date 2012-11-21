@@ -4,11 +4,11 @@ from sqlobject import *
 import sys, os
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
-connection = connectionForURI("root:scr33m0@localhost/SEG2105")
+connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
 sqlhub.processConnection= connection
-
+sqlhub.processConnection.debug = True; sqlhub.processConnection.debugOutput=True
 #Creating DB Tables if DNE
-for i in (Notification, Employee, Request, TimeOff, Shift, Schedule, PersonalSchedule, Store):
+for i in (Notification, Employee, Request, TimeOff, Shift, Schedule, Store):
 	i.createTable(ifNotExists=True)
 
 #Setting up Devel Server
