@@ -59,9 +59,16 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html {background-color:#EEE;}
 
 
-
+#backPanel{
+background-color:white;
+margin-right:auto;
+margin-left:auto;
+height:768px;
+width:1024px;
+}
 
 
 
