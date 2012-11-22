@@ -59,15 +59,53 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-html {background-color:#EEE;}
+html {background-color:#EFEFEF;}
+p{margin:0px;}
 
+.contentPanel{
+	border:1px solid #CCC;
+	height:590px;
+	width:933px;
+	float:right;
+}
 
 #backPanel{
-background-color:white;
-margin-right:auto;
-margin-left:auto;
-height:768px;
-width:1024px;
+	background-color:white;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:10px;
+	height:640px;
+	width:1137px;
+}
+#calendarBox{
+	display:table;
+	height:540px;
+	width:920px;
+	background-color:#EEE;
+	margin-right:auto;
+	margin-left:auto;
+	
+}
+#leftBar{
+	background-color:#DDD;
+	height:590px;
+	width:200px;
+	border-right: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	display:inline;
+	float:left;
+}
+#mainContentPanel{
+	display:inline-block;
+}
+#scheduleHeader{
+	text-align:center;
+}
+#topBar{
+	background-color:#666;
+	height:50px;
+	width:1137px;
 }
 
 
