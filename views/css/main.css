@@ -59,7 +59,7 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-html {background-color:#EFEFEF;}
+html {background-color:#FFF;}
 p{margin:0px;}
 
 .contentPanel{
@@ -67,6 +67,47 @@ p{margin:0px;}
 	height:590px;
 	width:933px;
 	float:right;
+}
+.dayBox{
+	width:128px;
+	height:260px;	
+	background-color:white;
+	display:inline-table;
+	border: 1px solid black;
+	margin-top:-5px;
+}
+.decisionBox{
+	background-color:#666;
+	width:65px;
+	height:25px;
+	float:right;
+	margin-top:25px;
+}
+.notification{
+	font-size:12px;
+	border:1px solid black;
+	width:156px;
+	height:67px;
+	padding:3px;
+}
+.notificationBox{
+	background-color:#EEE;
+	width:164px;
+	height:75px;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:3px;
+	margin-bottom:4px;
+	border:1px solid #FFF;
+}
+.taskBox{
+	background-color:#EEE;
+	width:184px;
+	height:60px;
+	margin-right:auto;
+	margin-left:auto;
+	margin-top:2px;
+	border:1px solid white;
 }
 
 #backPanel{
@@ -77,14 +118,31 @@ p{margin:0px;}
 	height:640px;
 	width:1137px;
 }
+#bottomLeftBar{
+	border:1px solid #AAA;
+	margin-top:5px;
+	background-color: #BBB;
+	width:190px;
+	height:280px;
+	margin-left:auto;
+	margin-right:auto;
+}
 #calendarBox{
 	display:table;
-	height:540px;
-	width:920px;
+	height:530px;
+	width:910px;
 	background-color:#EEE;
 	margin-right:auto;
 	margin-left:auto;
-	
+	padding: 5px;
+	overflow:auto;
+}
+#calendarScroll{
+	overflow-y:auto;	
+	overflow-x:hidden;
+	width:932px;	
+	height:531px;
+	margin:0px;
 }
 #leftBar{
 	background-color:#DDD;
@@ -96,8 +154,18 @@ p{margin:0px;}
 	display:inline;
 	float:left;
 }
+#logoutBox{
+	width:80px;
+	height:27px;
+	float:right;
+	margin-top:12px;
+	margin-right:10px;
+	background-color:#BBB;
+}
+
 #mainContentPanel{
 	display:inline-block;
+
 }
 #scheduleHeader{
 	text-align:center;
@@ -107,9 +175,17 @@ p{margin:0px;}
 	height:50px;
 	width:1137px;
 }
-
-
-
+#topLeftBar{
+	border:1px solid #AAA;
+	background-color: #BBB;
+	width:190px;
+	height:290px;
+	margin-top:5px;
+	margin-left:auto;
+	margin-right:auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
 
 
 
