@@ -11,9 +11,6 @@ class Employee(SQLObject):
 	shifts = MultipleJoin('Shift')
 	login = StringCol()
 	
-	#def __init__(theName, manager)
-	#	name = theName
-	#	isManager = manager
-		
-	#def addUnavailableDay(day)
-
+	def __init__(theName, manager):
+		name = theName
+		isManager = manager
