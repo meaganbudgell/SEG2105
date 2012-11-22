@@ -4,9 +4,11 @@ class Shift (SQLObject):
 
 	startTime = DateTimeCol()
 	endTime = DateTimeCol()
-	schedule = ForeignKey('Schedule')
+	employee = ForeignKey('Employee')
+	day = ForeignKey('Day')
+	isPreset = BoolCol(default=False)
 	
-	def __init__(start, end, theSchedule)
+	def __init__(start, end):
 		startTime = start
 		endTime = end
-		schedule = theSchedule
+		

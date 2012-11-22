@@ -12,7 +12,7 @@ sqlhub.processConnection.debug = True; sqlhub.processConnection.debugOutput=True
 done = False
 while not done:
 	try:
-		for i in (Employee, Notification, Request, TimeOff, Shift, Schedule, Store):
+		for i in (Employee, Notification, Request, TimeOff, Shift, Day, UnavailableDay, Store):
 			i.createTable(ifNotExists=True)
 		done = True
 	except:

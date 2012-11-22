@@ -4,5 +4,7 @@ from sqlobject import *
 # for the current application
 class Store (SQLObject):
 	name = StringCol()
-	schedule = ForeignKey('Schedule')
+	employees = RelatedJoin('Employee')
+	days = MultipleJoin('Day')
+	
 	
