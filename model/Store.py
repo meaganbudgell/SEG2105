@@ -10,10 +10,8 @@ class Store (SQLObject):
 	def __init__(theName):
 		name = theName
 	
-	def addEmployee(employee):
-		employees.insert(employee)
-		employee.stores.add(self)
+	def addEmployee(self,employee):
+		self.addEmployee(employee)
 		
-	def removeEmployee(employee):
-		employees.remove(employee)
-		employee.stores.remove(self)
+	def removeEmployee(self,employee):
+		self.removeEmployee(employee)
