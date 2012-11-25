@@ -169,6 +169,8 @@ p{margin:0px;}
 	width:406px;
 	height:210px;
 	margin-left:351px;
+	border:1px solid #DDD;
+	display:none;
 	
 }
 #logoutBox{
