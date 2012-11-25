@@ -23,6 +23,18 @@ p{margin:0px;}
 	float:right;
 	margin-top:25px;
 }
+.dynamicPanel{
+	float:right;
+	width:576px;	
+	height:571px;
+	margin-right:10px;
+	border:1px solid black;
+	margin-top:8px;
+}
+.introAdminText{
+	font-size:14px;
+	margin:0px;
+}
 .notification{
 	font-size:12px;
 	border:1px solid black;
@@ -40,14 +52,25 @@ p{margin:0px;}
 	margin-bottom:4px;
 	border:1px solid #FFF;
 }
+.options{
+	float:left;
+	width:344px;
+	height:581px;	
+	text-align:center;
+}
 .taskBox{
 	background-color:#EEE;
 	width:184px;
 	height:60px;
-	margin-right:auto;
-	margin-left:auto;
-	margin-top:2px;
+	margin-left:3px;
+	margin-top:3px;
 	border:1px solid white;
+}
+.taskBox:hover, .taskBox:focus, .notificationBox:hover, .notificationBox:focus{
+	background-color:#DDD;
+}
+.taskBox:active, .notificationBox:active{
+	background-color:#CCC;
 }
 
 #backPanel{
@@ -83,6 +106,13 @@ p{margin:0px;}
 	width:932px;	
 	height:531px;
 	margin:0px;
+}
+#deadlinePanel{
+	display:none;
+}
+#employeeManagementPanel{
+	
+
 }
 #leftBar{
 	background-color:#DDD;
@@ -128,6 +158,13 @@ p{margin:0px;}
 }
 #scheduleHeader{
 	text-align:center;
+}
+#schedulePanel{
+	display:none;
+}
+
+#shiftManagementPanel{
+	display:none;
 }
 #topBar{
 	background-color:#666;
