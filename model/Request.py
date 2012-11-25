@@ -6,6 +6,6 @@ class Request (InheritableSQLObject):
 	isApproved = BoolCol(default=None)
 	sender = ForeignKey('Employee')
 
-	def __init__(theNotification, theSender):
+	def __init__(self, theNotification, theSender):
 		notification = theNotification
 		sender = theSender

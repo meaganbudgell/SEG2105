@@ -6,6 +6,6 @@ class Notification(SQLObject):
 	request = SingleJoin('Request')
 	receiver = ForeignKey('Employee')
 	
-	def __init__(theMessage, theRequest):
+	def __init__(self, theMessage, theRequest):
 		message = theMessage
 		request = theRequest
