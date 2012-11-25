@@ -154,6 +154,23 @@ p{margin:0px;}
 	display:inline;
 	float:left;
 }
+#loginForm{
+	position:absolute;
+	top:50%;
+	margin-top:-37.5px;
+	margin-left:-130.5px;
+	left:50%
+}
+#loginPanel{
+	text-align:center;
+	margin-top:200px;
+	position:absolute;
+	background-color:#EEE;
+	width:406px;
+	height:210px;
+	margin-left:351px;
+	
+}
 #logoutBox{
 	width:80px;
 	height:27px;
@@ -164,7 +181,7 @@ p{margin:0px;}
 }
 
 #mainContentPanel{
-	display:inline-block;
+	display:none;
 
 }
 #scheduleHeader{
