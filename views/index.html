@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-	<script src = "js/vendor/jquery-1.8.3.min.js"></script>
+	
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -28,11 +28,11 @@
 
 		<section id = loginPanel>
 			<!-- This is lazy, I'll fix it later and NOT forget.-->
-			<form id = "loginForm" formtarget ="_top" method="get">
+			<div id = "loginForm" >
 				Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name ="name" placeholder="Name" required="required"><br>
 				Password:&nbsp;<input type="password" placeholder="****" required="required"></br>
-				<input type="submit" value = "Login">
-			</form>
+				<button id ="loginButton">Login</button>
+			</div>
 		</section>
 	
 		<section id="mainContentPanel">
@@ -59,6 +59,7 @@
 					<button class="taskBox" id="employeeManagementButton">Employee Admin </button>
 					<button class="taskBox" id="shiftManagementButton">Shift Admin </button>
 					<button class="taskBox" id="deadlineManagementButton">Set Deadline </button>
+					<button class="taskBox" id="backToMain">Back to Main Screen </button>
 				</section>
 			</section>
 
@@ -109,4 +110,7 @@
 
 
     </body>
+	<!-- JS at bottom for faster page loading -->
+	<script src = "js/vendor/jquery-1.8.3.min.js"></script>
+	<script src = "js/main.js"></script>
 </html>
