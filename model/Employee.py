@@ -28,4 +28,10 @@ class Employee(SQLObject):
 	def removeUnavailableDay(self, theDay):
 		someDay = UnavailableDay(theDay)
 		unavailableDays.remove(someDay)
-
+		
+		# Did it work?
+		try:
+			test = unavailableDays.index(someDay)
+			return False # The preceding line should fail
+		except IndexError:
+			return True
