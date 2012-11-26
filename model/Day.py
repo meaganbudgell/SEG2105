@@ -8,7 +8,7 @@ class Day(SQLObject):
 		shifts = theShifts
 		store = theStore
 		
-	def addShift(self, theShift)
+	def addShift(self, theShift):
 		shifts.insert(theShift)
 		
 		# Did it actually work?
@@ -18,12 +18,12 @@ class Day(SQLObject):
 		except IndexError:
 			return False
 		
-	def removeShift(self, theShift)
+	def removeShift(self, theShift):
 		shifts.remove(theShift)
 		
 		# Did it actually work?
 		try:
 			test = shifts.index(theShift)
 			return False # The preceding line should fail
-		except IndexError
+		except IndexError:
 			return True
