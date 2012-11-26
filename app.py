@@ -1,7 +1,9 @@
 from bottle import Bottle, run, template
 from controller import *
 from sqlobject import *
+from pickle import *
 import sys, os
+
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
 connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
@@ -26,5 +28,10 @@ app=Bottle()
 def hello():
 	return "Hello World!"
 
+@app.get("/testConstructor")
+def get():
+	jane=Employee(name="jane",isManager=False,login="5464")	
+	
+	return jane.__dict__
 run (app,host="localhost", port=8080)
 

@@ -7,8 +7,6 @@ class Store (SQLObject):
 	employees = RelatedJoin('Employee')
 	days = MultipleJoin('Day')
 	
-	def __init__(self, theName):
-		name = theName
 	
 	def addEmployee(self, employee):
 		employees.insert(employee)
