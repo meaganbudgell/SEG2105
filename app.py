@@ -62,7 +62,7 @@ def get():
 		       d.update({key.name:f(key.kw['otherClass'], getattr(obj, key.name))})
        
        		return d
-	return json.dump(to_dict(jane))
+	return to_dict(jane)
 
 run (app,host="localhost", port=8080)
 
