@@ -11,4 +11,3 @@ class Shift (SQLObject):
 	def __init__(self, start, end):
 		startTime = start
 		endTime = end
-		
