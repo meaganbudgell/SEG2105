@@ -1,11 +1,11 @@
-from bottle import Bottle, run, template
+from bottle import Bottle, run, template, static_file
 from controller import *
 from sqlobject import *
-from json import *
-import jsonpickle
-import json
+import logging
 import sys, os
 
+#Logging Config
+logging.basicConfig(filename='logs/log.txt')
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
 connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
@@ -26,15 +26,27 @@ while not done:
 app=Bottle()
 
 #Test Page
-@app.get("/hello")
-def hello():
-	return "Hello World!"
+@app.get("/testPage")
+def functionTester():
+	jane=Employee(name="Jane", isManager=True, login="4126")
+	logging.debug("Created Jane")
+	logging.debug(controller.toDict(jane))
+	tim=Employee(name="Tim", isManager=False, login="4189")
+	logging.debug("Created Tim")
+	logging.debug(controller.toDict(tim))
+	bob=Employee(name="Bob", isManager=False, login="4122")
+	logging.debug("Created Bob")
+	logging.debug(controller.toDict(bob))
+	peter=Employee(name="Peter", isManager=False, login="4121")
+	logging.debug("Created Peter")
+	logging.debug(controller.toDict(peter))
+	abcStore=Store(name="ABC")
+	logging.debug("Created ABC Store")
+	logging.debug(controller.toDict(abcStore))
+			
 
-@app.get("/testConstructor")
-def get():
-	jane=Employee(name="jane",isManager=False,login="5464")	
-	
-	return to_dict(jane)
+
+	return static_file("log.txt", root="logs/log.txt")
 
 run (app,host="localhost", port=8080)
 
