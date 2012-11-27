@@ -36,7 +36,10 @@ def checkLogin(name, login):
 	n = Employee.select(Employee.q.name == name)[0]
 	l = Employee.select(Employee.q.login == login)[0]
 	
-	if (n == name and l == login):
+	theName = n.name
+	theLogin = l.login
+	
+	if (theName == name and theLogin == login):
 		return True
 	
 	return False
