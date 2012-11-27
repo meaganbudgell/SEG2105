@@ -57,12 +57,10 @@ def loadNotifications(name):
 	result = list()
 
 def loadRequests(name):
-	# Return all of the requests
-	result = list()
-	for r in Request.select():
-		result.insert(Request.select(Request.q.sender.name == name))
+	# Return all of the requests	
+	result = Request.select()
 	
-	return result._get__dict
+	return toDict(result)
 
 def answerRequest(isApproved, request_id):
 	# Approves or denies the given request
@@ -91,10 +89,13 @@ def fireEmployee(name):
 def loadEmployeeList(storeName):
 	# Returns a list of employees at a given store
 	result = Employee.select(Employee.q.stores == storeName)
-	return result
+	return toDict(result)
 
 def loadStoreList():
-	pass
+	# Returns all of the stores
+	result = Store.select()
+	return toDict(result)
+	
 
 def loadTemplateShifts():
 	pass
@@ -118,13 +119,16 @@ def removeShiftFromDay(shift_id, day_id):
 	day_id.removeShift(shift_id)
 
 def loadDay(day_id):
-	pass
+	# Returns the day with the corresponding ID
+	day = Day.select(day_id)
+	return day._get_dict()
 
 def addUnavailableDay(day_id):
-	pass
+	# Creates a new UnavailableDay
+	ud = UnavailableDay(dayNumber = day_id)
 
 def removeUnavailableDay(day_id):
-	pass
+	# Removes an UnavailableDay
 
 def getScheduleDeadline():
 	pass
@@ -133,7 +137,8 @@ def setScheduleDeadline(date):
 	pass
 
 def addTimeOffRequest(employee_id, date):
-	pass
+	# Creates a new TimeOff Request
+	r = TimeOff(day = date.timetuple().tm_yday, sender = employee_id)
 
 def viewNotification(isSeen):
 	pass
