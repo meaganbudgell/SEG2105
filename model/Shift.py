@@ -10,5 +10,5 @@ class Shift (SQLObject):
 	isPreset = BoolCol(default=False)
 
 		
-	def __get__dict(self):
+	def _get_dict(self):
 		return to_dict(self)

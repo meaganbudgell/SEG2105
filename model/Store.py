@@ -9,5 +9,5 @@ class Store (SQLObject):
 	days = RelatedJoin('Day')
 	
 		
-	def __get__dict(self):
+	def _get_dict(self):
 		return to_dict(self)

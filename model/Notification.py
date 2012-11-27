@@ -9,7 +9,7 @@ class Notification(SQLObject):
 	isSeen=BoolCol(default=False)
 
 		
-	def __get__dict(self):
+	def _get_dict(self):
 		return to_dict(self)
 	
 

@@ -10,5 +10,5 @@ class UnavailableDay(SQLObject):
 		#dayNumber = day.timetuple().tm_yday
 
 		
-	def __get__dict(self):
+	def _get_dict(self):
 		return to_dict(self)

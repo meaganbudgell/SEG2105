@@ -5,7 +5,7 @@ class Day(SQLObject):
 	shifts = MultipleJoin('Shift')	
 	store = RelatedJoin('Store')
 	
-	def __get__dict(self):
+	def _get_dict(self):
 		return to_dict(self)
 
 		

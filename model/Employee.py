@@ -13,5 +13,5 @@ class Employee(SQLObject):
 	login = StringCol()
 	
 		
-	def __get__dict(self):
+	def _get_dict(self):
 		return to_dict(self)
