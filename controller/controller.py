@@ -36,7 +36,7 @@ def checkLogin(name, login):
 	n = Employee.select(Employee.q.name == name)
 	l = Employee.select(Employee.q.login == login)
 	
-	if (n == name and l == login)
+	if (n == name and l == login):
 		return True
 	
 	return False
