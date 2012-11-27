@@ -7,7 +7,4 @@ class Shift (SQLObject):
 	employee = ForeignKey('Employee')
 	day = ForeignKey('Day')
 	isPreset = BoolCol(default=False)
-	
-	def __init__(self, start, end):
-		startTime = start
-		endTime = end
+

@@ -5,13 +5,6 @@ from sqlobject import *
 class Store (SQLObject):
 	name = StringCol()
 	employees = RelatedJoin('Employee')
-	days = MultipleJoin('Day')
+	days = RelatedJoin('Day')
 	
-	
-	def addEmployee(self, employee):
-		employees.insert(employee)
-		employee.stores.add(self)
-		
-	def removeEmployee(self, employee):
-		employees.remove(employee)
-		employee.stores.remove(self)
+

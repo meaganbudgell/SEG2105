@@ -4,5 +4,5 @@ from sqlobject.inheritance import *
 class Request (InheritableSQLObject):
 	notification = ForeignKey('Notification')
 	isApproved = BoolCol(default=None)
-	sender_id = ForeignKey('Employee')
+	sender = ForeignKey('Employee')
 

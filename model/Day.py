@@ -2,7 +2,7 @@ from sqlobject import *
 
 class Day(SQLObject):
 	shifts = MultipleJoin('Shift')	
-	store = ForeignKey('Store')
+	store = RelatedJoin('Store')
 
 		
 	def addShift(self, theShift):

@@ -5,7 +5,6 @@ class Notification(SQLObject):
 	timeStamp = DateTimeCol()
 	request = SingleJoin('Request')
 	receiver = ForeignKey('Employee')
+	isSeen=BoolCol(default=False)
 	
-	def __init__(self, theMessage, theRequest):
-		message = theMessage
-		request = theRequest
+
