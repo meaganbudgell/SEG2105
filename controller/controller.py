@@ -32,7 +32,14 @@ def toDict(obj):
        		return d
 
 def checkLogin(name, login):
-	pass
+	# Returns True if the name/login match, False otherwise
+	n = Employee.select(Employee.q.name == name)
+	l = Employee.select(Employee.q.login == login)
+	
+	if (n == name and l == login)
+		return True
+	
+	return False
 
 def getMonthDetails(date):
 	pass
@@ -44,13 +51,14 @@ def checkSchedule(date):
 	pass
 
 def loadNotifications(name):
-	pass
+	# Return all of the notifications
+	result = list()
 
 def loadRequests(name):
 	# Return all of the requests
 	result = list()
 	for r in Request.select():
-		result.insert(Request.select(Request.q.sender.name = name))
+		result.select(Request.select(Request.q.sender.name == name))
 	
 	return toDict(result)
 
@@ -84,7 +92,7 @@ def addNewEmployee(name, isManager, loginPassword, store_id):
 
 	#	store = Store.select(Store.q.id == store_id)
 	# This select function always returns a list even if there is only one store. So...
-		store =Store.select(Store.q.id==store_id)[0]
+		store = Store.select(Store.q.id == store_id)[0]
 		store.addEmployee(e)
 		
 	
