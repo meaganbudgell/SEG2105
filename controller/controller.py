@@ -58,8 +58,7 @@ def loadNotifications(name):
 
 def loadRequests(name):
 	# Return all of the requests	
-	result = Request.select()
-	
+	result = Request.select()	
 	return toDict(result)
 
 def answerRequest(isApproved, request_id):
@@ -141,5 +140,8 @@ def addTimeOffRequest(employee_id, date):
 	# Creates a new TimeOff Request
 	r = TimeOff(day = date.timetuple().tm_yday, sender = employee_id)
 
-def viewNotification(isSeen):
-	pass
+def viewNotification(isSeen, notification_id):
+	# Sets a notification's status to "viewed"
+	n = Notification.select(notification_id)[0]
+	n.isSees = isSeen
+	return n._get_dict
