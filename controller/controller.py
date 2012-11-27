@@ -55,13 +55,11 @@ def answerRequest(isApproved):
 def addShiftBlock(startTime, endTime):
 	pass
 
-def addEmployee(name, isManager, loginPassword, store_id):
+def addEmployees(name, isManager, loginPassword, store_id):
 	# Creates a new employee
-	e = Employee()
-	e.name = name
-	e.isManager = isManager
-	e.login = login
-	e.stores.insert(store_id)
+	e = Employee(name=name, isManager=isManager, login=login)
+	store = Store.select(Store.q.id = store_id)
+	store.addEmployee(e)
 
 def loadEmployeeList(storeName):
 	pass
