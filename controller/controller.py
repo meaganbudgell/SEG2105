@@ -49,20 +49,38 @@ def loadNotifications(name):
 def loadRequests(name):
 	pass
 
-def answerRequest(isApproved):
-	pass
+def answerRequest(isApproved, request_id):
+	# Approves or denies the given request
+	r = Request.select(Request.q.id = request.id)
+	r.isApproved = isApproved	
 
 def addShiftBlock(startTime, endTime):
-	pass
+	# Creates a new shift
+	s = Shift(startTime = startTime, endTime = endTime)
 
-def addEmployee(name, isManager, loginPassword, store_id):
+def addNewEmployee(name, isManager, loginPassword, store_id):
 	# Creates a new employee
-	e = Employee()
-	e.name = name
-	e.isManager = isManager
-	e.login = login
-	e.stores.insert(store_id)
+	e = Employee(name=name, isManager=isManager, login=login)
+	if store_id < 0
+		# We need to add the employee to every store
+		notFinished = True
+		id = 0
+		while notFinished = True:
+			try:
+				store = Store.select(Store.q.id = id)
+				store.addEmployee(e)
+				id += 1
+			except:
+				notFinished = False
+	else
+		store = Store.select(Store.q.id = store_id)
+		store.addEmployee(e)
 
+def fireEmployee(name):
+	# Removes an employee
+	Employee.delete(Employee.q.name = name)
+	pass
+	
 def loadEmployeeList(storeName):
 	pass
 
