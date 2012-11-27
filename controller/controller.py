@@ -129,6 +129,7 @@ def addUnavailableDay(day_id):
 
 def removeUnavailableDay(day_id):
 	# Removes an UnavailableDay
+	pass
 
 def getScheduleDeadline():
 	pass
