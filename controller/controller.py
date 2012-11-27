@@ -77,23 +77,9 @@ def addNewEmployee(name, isManager, loginPassword, store_id):
 	# Creates a new employee
 	e = Employee(name=name, isManager=isManager, login=login)
 	if (store_id < 0):
-		# We need to add the employee to every store
-	#	notFinished = True
-	#	id = 0
-	#	while notFinished == True:
-	#		try:
-	#			store = Store.select(Store.q.id == store_id)
-	#			store.addEmployee(e)
-	#			id += 1
-	#		except:
-	#			notFinished = False
-	#This is what I meant by a loop.
 		for store in Store.select():
 			store.addEmployee(e)
 	else:
-
-	#	store = Store.select(Store.q.id == store_id)
-	# This select function always returns a list even if there is only one store. So...
 		store = Store.select(Store.q.id == store_id)[0]
 		store.addEmployee(e)
 		
@@ -104,7 +90,8 @@ def fireEmployee(name):
 	
 def loadEmployeeList(storeName):
 	# Returns a list of employees at a given store
-	result = Store.select(Store.q.name == storeName)
+	result = Employee.select(Employee.q.stores == storeName)
+	return result
 
 def loadStoreList():
 	pass
