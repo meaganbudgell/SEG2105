@@ -58,9 +58,9 @@ def loadRequests(name):
 	# Return all of the requests
 	result = list()
 	for r in Request.select():
-		result.select(Request.select(Request.q.sender.name == name))
+		result.insert(Request.select(Request.q.sender.name == name))
 	
-	return toDict(result)
+	return result._get__dict
 
 def answerRequest(isApproved, request_id):
 	# Approves or denies the given request
@@ -99,10 +99,10 @@ def addNewEmployee(name, isManager, loginPassword, store_id):
 def fireEmployee(name):
 	# Removes an employee
 	Employee.delete(Employee.q.name == name)
-	pass
 	
 def loadEmployeeList(storeName):
-	pass
+	# Returns a list of employees at a given store
+	result = Store.select(Store.q.name == storeName)
 
 def loadStoreList():
 	pass
