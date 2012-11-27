@@ -4,9 +4,6 @@ class Day(SQLObject):
 	shifts = MultipleJoin('Shift')	
 	store = ForeignKey('Store')
 
-	def __init__(self, theShifts, theStore):
-		shifts = theShifts
-		store = theStore
 		
 	def addShift(self, theShift):
 		shifts.insert(theShift)
