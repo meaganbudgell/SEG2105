@@ -9,4 +9,4 @@ class Request (InheritableSQLObject):
 
 		
 	def _get_dict(self):
-		return to_dict(self)
+		return toDict(self)

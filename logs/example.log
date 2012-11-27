@@ -1,4 +1,62 @@
-DEBUG:root:This message should be in the log file
-INFO:root:So should this
-WARNING:root:And this one
-WARNING:root:variable:this one
+DEBUG:root:Created Jane
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 24L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created Tim
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Tim', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4189', 'id': 25L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created Bob
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Bob', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4122', 'id': 26L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created Peter
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Peter', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4121', 'id': 27L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created ABC Store
+DEBUG:root:{'employees': {'items': [], 'name': 'Employee'}, 'days': {'items': [], 'name': 'Day'}, 'name': 'ABC', 'id': 6L}
+DEBUG:root:Created Jane
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 28L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created Tim
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Tim', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4189', 'id': 29L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created Bob
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Bob', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4122', 'id': 30L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created Peter
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Peter', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4121', 'id': 31L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:Created ABC Store
+DEBUG:root:{'employees': {'items': [], 'name': 'Employee'}, 'days': {'items': [], 'name': 'Day'}, 'name': 'ABC', 'id': 7L}
+DEBUG:root:Created Jane</br>
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 32L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:</br>Created Tim</br>
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Tim', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4189', 'id': 33L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:</br>Created Bob</br>
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Bob', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4122', 'id': 34L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:</br>Created Peter</br>
+DEBUG:root:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': False, 'name': 'Peter', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4121', 'id': 35L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:root:</br>Created ABC Store</br>
+DEBUG:root:{'employees': {'items': [], 'name': 'Employee'}, 'days': {'items': [], 'name': 'Day'}, 'name': 'ABC', 'id': 8L}
+DEBUG:Created Jane</br>
+DEBUG:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 36L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:</br>Created Tim</br>
+DEBUG:Created Jane</br>
+DEBUG:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 38L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:</br>Created Tim</br>
+DEBUG:Created Jane</br>
+DEBUG:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 40L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:</br>Created Tim</br>
+DEBUG:Created Jane</br>
+DEBUG:Created Tim</br>
+DEBUG:Created Bob</br>
+DEBUG:Created Peter</br>
+DEBUG:Created ABC Store</br>
+DEBUG:Created Jane</br>
+DEBUG:Created Tim</br>
+DEBUG:Created Bob</br>
+DEBUG:Created Peter</br>
+DEBUG:Created ABC Store</br>
+DEBUG:Created Jane</br>
+DEBUG:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 50L, 'stores': {'items': [], 'name': 'Store'}}
+DEBUG:Created Tim</br>
+DEBUG:Created Bob</br>
+DEBUG:Created Peter</br>
+DEBUG:Created ABC Store</br>
+DEBUG:Created Jane</br>
+DEBUG:Created Jane</br>
+DEBUG:{'notifications': {'items': [], 'name': 'Notification'}, 'shifts': {'items': [], 'name': 'Shift'}, 'isManager': True, 'name': 'Jane', 'requests': {'items': [], 'name': 'Request'}, 'unavailableDays': {'items': [], 'name': 'UnavailableDay'}, 'login': '4126', 'id': 55L, 'stores': {'items': [], 'name': 'Store'}}</br>
+DEBUG:Created Tim</br>
+DEBUG:Created Bob</br>
+DEBUG:Created Peter</br>
+DEBUG:Created ABC Store</br>

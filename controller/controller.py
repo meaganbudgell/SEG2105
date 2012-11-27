@@ -31,18 +31,17 @@ def toDict(obj):
        
        		return d
 
-def checkLogin(name, login):
-	# Returns True if the name/login match, False otherwise
-	n = Employee.select(Employee.q.name == name)[0]
-	l = Employee.select(Employee.q.login == login)[0]
-	
-	theName = n.name
-	theLogin = l.login
-	
-	if (theName == name and theLogin == login):
-		return True
-	
-	return False
+def checkLogin(inputName, inputLogin):
+	# If name is not in db, catches error and returns false.
+	try:
+		#Grabs Employee with the same name. Compares that login with the input one. True or False Accordingly.
+		n = Employee.select(Employee.q.name == inputName)[0]
+		if (n.login==inputLogin):
+			return True
+		else:
+			return False
+	except IndexError, e:
+		return False
 
 def getMonthDetails(date):
 	pass
