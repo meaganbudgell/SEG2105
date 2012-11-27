@@ -47,7 +47,12 @@ def loadNotifications(name):
 	pass
 
 def loadRequests(name):
-	pass
+	# Return all of the requests
+	result = list()
+	for r in Request.select():
+		result.insert(Request.select(Request.q.sender.name = name))
+	
+	return toDict(result)
 
 def answerRequest(isApproved, request_id):
 	# Approves or denies the given request
