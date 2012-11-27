@@ -1,8 +1,12 @@
 from sqlobject import *
+from common import *
 
 class Day(SQLObject):
 	shifts = MultipleJoin('Shift')	
 	store = RelatedJoin('Store')
+	
+	def __get__dict(self):
+		return to_dict(self)
 
 		
 	def addShift(self, theShift):

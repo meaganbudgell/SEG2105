@@ -1,5 +1,5 @@
 from sqlobject import *
-
+from common import *
 import datetime
 
 class Employee(SQLObject):
@@ -12,3 +12,6 @@ class Employee(SQLObject):
 	shifts = MultipleJoin('Shift')
 	login = StringCol()
 	
+		
+	def __get__dict(self):
+		return to_dict(self)

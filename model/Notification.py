@@ -1,4 +1,5 @@
 from sqlobject import *
+from common import *
 
 class Notification(SQLObject):
 	message = StringCol()
@@ -6,5 +7,9 @@ class Notification(SQLObject):
 	request = SingleJoin('Request')
 	receiver = ForeignKey('Employee')
 	isSeen=BoolCol(default=False)
+
+		
+	def __get__dict(self):
+		return to_dict(self)
 	
 

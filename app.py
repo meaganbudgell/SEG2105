@@ -5,7 +5,7 @@ import logging
 import sys, os
 
 #Logging Config
-logging.basicConfig(filename='logs/log.txt')
+logging.basicConfig(filename='logs/example.log')
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
 connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
@@ -46,7 +46,7 @@ def functionTester():
 			
 
 
-	return static_file("log.txt", root="logs/log.txt")
+	return static_file("example.log", root="logs/example.log")
 
 run (app,host="localhost", port=8080)
 

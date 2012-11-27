@@ -1,4 +1,5 @@
 from sqlobject import *
+from common import *
 
 class Shift (SQLObject):
 
@@ -8,3 +9,6 @@ class Shift (SQLObject):
 	day = ForeignKey('Day')
 	isPreset = BoolCol(default=False)
 
+		
+	def __get__dict(self):
+		return to_dict(self)
