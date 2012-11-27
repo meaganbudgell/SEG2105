@@ -33,8 +33,8 @@ def toDict(obj):
 
 def checkLogin(name, login):
 	# Returns True if the name/login match, False otherwise
-	n = Employee.select(Employee.q.name == name)
-	l = Employee.select(Employee.q.login == login)
+	n = Employee.select(Employee.q.name == name)[0]
+	l = Employee.select(Employee.q.login == login)[0]
 	
 	if (n == name and l == login):
 		return True
