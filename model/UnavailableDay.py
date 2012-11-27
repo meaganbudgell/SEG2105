@@ -8,6 +8,5 @@ class UnavailableDay(SQLObject):
 	dayNumber = IntCol()
 	employee = ForeignKey ('Employee')
 
-	def __init__(self, day):
 		# This converts the datetime object into the "day number"
-		dayNumber = day.timetuple().tm_yday
+		#dayNumber = day.timetuple().tm_yday
