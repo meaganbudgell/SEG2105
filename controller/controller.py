@@ -73,7 +73,7 @@ def addShiftBlock(startTime, endTime):
 
 def addNewEmployee(name, isManager, loginPassword, store_id):
 	# Creates a new employee
-	e = Employee(name=name, isManager=isManager, login=login)
+	e = Employee(name=name, isManager=isManager, login=loginPassword)
 	if (store_id < 0):
 		for store in Store.select():
 			store.addEmployee(e)
