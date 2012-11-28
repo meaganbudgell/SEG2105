@@ -11,5 +11,3 @@ class Notification(SQLObject):
 		
 	def _get_dict(self):
 		return toDict(self)
-	
-

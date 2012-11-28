@@ -90,7 +90,12 @@ def fireEmployee(name):
 def loadEmployeeList(storeName):
 	# Returns a list of employees at a given store
 	result = Store.select(Store.q.name == storeName)
-	return toDict(result)
+	d = dict()
+	
+	for store in result
+		d[store.name] = store.dict
+	
+	return d
 
 def loadStoreList():
 	# Returns all of the stores
