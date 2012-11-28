@@ -54,7 +54,17 @@ def loadSchedule(employeeName):
 	return result
 
 def checkSchedule(date):
-	pass
+	# Returns True if the date is filled, False otherwise
+	
+	day_id = date.timetuple().tm_yday
+	
+	try:
+		s = Shift.select(Shift.q.day == day_id)[0]
+		return True
+	except IndexError, e:
+		return False
+	
+	
 def matchEmployeeName(employeeName):
 	try:
 		employee = Employee.select(Employee.q.name == employeeName)[0]
@@ -63,13 +73,19 @@ def matchEmployeeName(employeeName):
 		return None
 
 def loadNotifications(employeeName):
-	# Return all of the notifications
-	pass
+	# Return all of the notifications of the given employee
+	employee = Employee.select(Employee.q.name = employeeName)
+	result = dict()
+	result["items"] = [x.dict for x in employee.notifications]
+	return result
+	
 
 def loadRequests(name):
-	# Return all of the requests	
-	result = Request.select()	
-	return toDict(result)
+	# Return all of the requests of the given employee
+	employee = Employee.select(Employee.q.name = employeeName)
+	result = dict()
+	result["items"] = [x.dict for x in employee.requests]
+	return result
 
 def answerRequest(isApproved, request_id):
 	# Approves or denies the given request
@@ -78,7 +94,7 @@ def answerRequest(isApproved, request_id):
 
 def addShiftBlock(startTime, endTime):
 	# Creates a new shift
-	s = Shift(startTime = startTime, endTime = endTime)
+	s = Shift(startTime = startTime, endTime = endTime, employee = None)
 
 def addNewEmployee(name, isManager, loginPassword, store_id):
 	# Creates a new employee
@@ -111,18 +127,43 @@ def loadStoreList():
 	return result
 
 def loadTemplateShifts():
-	pass
+	# Returns all of the shifts that DO NOT have an Employee
+	shift = Shift.select(Shift.q.employee == None)
+	result = dict()
+	result["items"] = [x.dict for x in shift]
+	return result
 
 def removeShiftBlock(shift_id):
-	pass
+	# Deletes the specified shift
+	shift = Shift.select(Shift.q.id == shift_id)
+	shift.destroySelf()
 
 def addEmployeeToShift(employee, shift_id):
 	# Adds the given employee to the given shift
 	shift_id.employee = employee
 
 def checkAvailableEmployees(shift_id):
-
-	pass
+	# Returns a list of employees who are free for a given shift
+	
+	# Get the shift and the day that corresponds to it
+	s = Shift.select(Shift.q.id == shift_id)[0]
+	d = s.day
+	
+	available = []
+	
+	# Get a list of all of the employees and get the employees from the unavailable days
+	for x in Employee.select():
+		for i in x.unavailableDays:
+			if i.day_id = d:
+				break
+			
+		# If we made it here we can add the employee to the list
+		available.insert(x)
+	
+	result = dict()
+	result["items"] = [x.dict for x in available]
+	
+	return result
 
 def addShiftToDay(shift_id, day_id):
 	# Adds the given shift to the given day
@@ -141,14 +182,12 @@ def removeUnavailableDay(day_id):
 	ud = UnavailableDay.select(day_id)[0]
 	ud.destroySelf()
 
-
 def getScheduleDeadline():
 	# Returns the deadline set for employees to modify their personal schedule
-	result = Store.select()[0]
-	# NEEDS TO BE FIXED
+	return Store.deadline["deadline"]
 
 def setScheduleDeadline(date):
-	pass
+	Store.deadline["deadline"] = date
 
 def addTimeOffRequest(employee_id, date):
 	# Creates a new TimeOff Request
