@@ -46,17 +46,25 @@ def checkLogin(inputName, inputLogin):
 def getMonthDetails(date):
 	pass
 
-def loadSchedule(employee_id):
+def loadSchedule(employeeName):
 	# Returns every shift that an employee works
-	result = Shift.select(Shift.q.employee == employee_id)
-	return toDict(result)
+
+	shiftList=Shift.select(Shift.q.employee == employee.id)
+	result["items"]= [x.dict for x in shiftList]
+	return result
 
 def checkSchedule(date):
 	pass
+def matchEmployeeName(employeeName):
+	try
+		employee = Employee.select(Employee.q.name == employeeName)[0]
+		return employee
+	except IndexError e:
+		return None
 
-def loadNotifications(name):
+def loadNotifications(employeeName):
 	# Return all of the notifications
-	result = list()
+	employee=
 
 def loadRequests(name):
 	# Return all of the requests	
@@ -93,12 +101,17 @@ def loadEmployeeList(storeName):
 	result = dict()
 	result["items"]=[x.dict for x in store.employees]
 	return result
+<<<<<<< Updated upstream
+=======
+		
+>>>>>>> Stashed changes
 
 def loadStoreList():
 	# Returns all of the stores
-	result = Store.select()
-	return toDict(result)
-	
+	storeList=Store.select()
+	result=dict()
+	result["items"]=[x.dict for x in storeList]
+	return result
 
 def loadTemplateShifts():
 	pass

@@ -22,7 +22,10 @@
 	<strong>Correct Login of Tim, 4189:</strong>{{controller.checkLogin("Tim", "4189")}}</br></br>
 	<strong>Wrong Login of Kathy, 4189:</strong>{{controller.checkLogin("Kathy", "4189")}}</br></br>
 
-
+	<strong> Add New Employee Martha, 1111, abcStore </strong>:
+	%controller.addNewEmployee("Martha", False,"1111", abcStore)
+	{{controller.loadEmployeeList(abcStore.name)}}
+	
 
 
 
