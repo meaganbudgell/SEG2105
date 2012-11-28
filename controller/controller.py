@@ -47,7 +47,9 @@ def getMonthDetails(date):
 	pass
 
 def loadSchedule(employee_id):
-	pass
+	# Returns every shift that an employee works
+	result = Shift.select(Shift.q.employee == employee_id)
+	return toDict(result)
 
 def checkSchedule(date):
 	pass
@@ -127,11 +129,15 @@ def addUnavailableDay(day_id):
 	ud = UnavailableDay(dayNumber = day_id)
 
 def removeUnavailableDay(day_id):
-	# Removes an UnavailableDay
-	pass
+	# Removes the specified day
+	ud = UnavailableDay.select(day_id)[0]
+	ud.destroySelf()
+
 
 def getScheduleDeadline():
-	pass
+	# Returns the deadline set for employees to modify their personal schedule
+	result = Store.select()[0]
+	# NEEDS TO BE FIXED
 
 def setScheduleDeadline(date):
 	pass
