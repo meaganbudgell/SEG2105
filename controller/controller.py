@@ -1,5 +1,5 @@
 from model import *
-
+import calendar
 #Converts objects into dictionaries so Bottle can output JSON !
 def toDict(obj):
 		# each type of column
@@ -44,7 +44,9 @@ def checkLogin(inputName, inputLogin):
 		return False
 
 def getMonthDetails(date):
-	pass
+	pyDate=datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
+	monthName=calendar.month_name(pyDate.date.month())
+	dayNameStart=pyDate.date.weekday()
 
 def loadSchedule(employeeName):
 	# Returns every shift that an employee works
@@ -74,7 +76,7 @@ def matchEmployeeName(employeeName):
 
 def loadNotifications(employeeName):
 	# Return all of the notifications of the given employee
-	employee = Employee.select(Employee.q.name = employeeName)
+	employee = Employee.select(Employee.q.name == employeeName)
 	result = dict()
 	result["items"] = [x.dict for x in employee.notifications]
 	return result
@@ -82,7 +84,7 @@ def loadNotifications(employeeName):
 
 def loadRequests(name):
 	# Return all of the requests of the given employee
-	employee = Employee.select(Employee.q.name = employeeName)
+	employee = Employee.select(Employee.q.name == employeeName)
 	result = dict()
 	result["items"] = [x.dict for x in employee.requests]
 	return result
@@ -92,18 +94,18 @@ def answerRequest(isApproved, request_id):
 	r = Request.select(Request.q.id == request_id)
 	r.isApproved = isApproved	
 
-def addShiftBlock(startTime, endTime):
+def addTemplateShift(inputStartTime, inputEndTime):
 	# Creates a new shift
-	s = Shift(startTime = startTime, endTime = endTime, employee = None)
+	s = Shift(startTime = inputStartTime, endTime = inputEndTime, employee = None, day=None)
 
-def addNewEmployee(name, isManager, loginPassword, store_id):
+def addNewEmployee(name, isManager, loginPassword, storeName):
 	# Creates a new employee
 	e = Employee(name=name, isManager=isManager, login=loginPassword)
-	if (store_id < 0):
+	if (storeName==None):
 		for store in Store.select():
 			store.addEmployee(e)
 	else:
-		store = Store.select(Store.q.id == store_id)[0]
+		store = Store.select(Store.q.name == storeName)[0]
 		store.addEmployee(e)
 		
 	
@@ -133,14 +135,24 @@ def loadTemplateShifts():
 	result["items"] = [x.dict for x in shift]
 	return result
 
-def removeShiftBlock(shift_id):
-	# Deletes the specified shift
-	shift = Shift.select(Shift.q.id == shift_id)
+def addEmployeeToStore(sName, eName):
+	store = Store.select(Store.q.name == sName)[0]
+	employee=Employee.select(Employee.q.name==eName)[0]
+	store.addEmployee(employee.id)
+
+def removeEmployeeFromStore(sName, eName):
+	store = Store.select(Store.q.name == sName)[0]
+	employee=Employee.select(Employee.q.name==eName)[0]
+	store.removeEmployee(employee.id)
+
+def removeTemplateShift(shift_id):
+	shift = Shift.select(Shift.q.id == shift_id, Shift.q.day==None)[0]
 	shift.destroySelf()
 
-def addEmployeeToShift(employee, shift_id):
+def addEmployeeToShift(eName, shift_id):
 	# Adds the given employee to the given shift
-	shift_id.employee = employee
+	employee=Employee.select(Employee.q.name==eName)[0]
+	shift = Shift.select(Shift.q.id == shift_id)[0]
 
 def checkAvailableEmployees(shift_id):
 	# Returns a list of employees who are free for a given shift
@@ -154,7 +166,7 @@ def checkAvailableEmployees(shift_id):
 	# Get a list of all of the employees and get the employees from the unavailable days
 	for x in Employee.select():
 		for i in x.unavailableDays:
-			if i.day_id = d:
+			if i.day_id == d:
 				break
 			
 		# If we made it here we can add the employee to the list
@@ -165,21 +177,21 @@ def checkAvailableEmployees(shift_id):
 	
 	return result
 
-def addShiftToDay(shift_id, day_id):
-	# Adds the given shift to the given day
-	day_id.addShift(shift_id)
+def addDayToShift(shift_id, day_id):
+	Shift.select(Shift.q.id==shift_id)[0].day=day_id
 
-def removeShiftFromDay(shift_id, day_id):
-	# Removes the given shift from the given day
-	day_id.removeShift(shift_id)
+def removeDayFromShift(shift_id):
+	Shift.select(Shift.q.id==shift_id)[0].destroySelf()
 
-def addUnavailableDay(day_id):
+def addUnavailableDay(day_id, employeeName):
 	# Creates a new UnavailableDay
-	ud = UnavailableDay(dayNumber = day_id)
+	employeeID= Employee.select(Employee.q.name==employeeName)[0]
+	ud = UnavailableDay(day = day_id, employee=employeeID.id)
 
-def removeUnavailableDay(day_id):
+def removeUnavailableDay(day_id, employeeName):
 	# Removes the specified day
-	ud = UnavailableDay.select(day_id)[0]
+	employeeID= Employee.select(Employee.q.name==employeeName)[0]
+	ud = UnavailableDay.select(UnavailableDay.q.day == day_id, UnavailableDay.q.employee==employeeID.id)[0]
 	ud.destroySelf()
 
 def getScheduleDeadline():

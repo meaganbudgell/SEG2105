@@ -7,7 +7,7 @@ import shelve
 class Store (SQLObject):
 	name = StringCol()
 	employees = RelatedJoin('Employee')
-	shifts = RelatedJoin('Shift')
+	shifts = MultipleJoin('Shift')
 	deadline=shelve.open("deadline.shelve")
 	deadline["deadline"]=0	
 	

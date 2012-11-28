@@ -27,6 +27,9 @@ app=Bottle()
 @app.get("/testPage")
 @view("testPage")
 def functionTester():
+	for i in (TimeOff, Request, Notification, Shift,UnavailableDay,Employee , Store):	
+		for x in i.select():
+			x.destroySelf()
 	return dict(controller=controller, model=model)
 
 run (app,host="localhost", port=8080)

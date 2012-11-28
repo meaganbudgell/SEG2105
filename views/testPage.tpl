@@ -1,5 +1,6 @@
 <html>
 <body>
+	
 	%jane=model.Employee(name="Jane", isManager=True, login="4126")
 	<strong>Created Jane</strong>:{{jane.dict}}</br></br>
 
@@ -22,9 +23,11 @@
 	<strong>Correct Login of Tim, 4189:</strong>{{controller.checkLogin("Tim", "4189")}}</br></br>
 	<strong>Wrong Login of Kathy, 4189:</strong>{{controller.checkLogin("Kathy", "4189")}}</br></br>
 
-	<strong> Add New Employee Martha, 1111, abcStore </strong>:
-	%controller.addNewEmployee("Martha", False,"1111", abcStore)
-	{{controller.loadEmployeeList(abcStore.name)}}
+	<strong> Add New Employee Martha, 1111, abcStore , loadEmployeeList("ABC")</strong>:
+	%controller.addNewEmployee("Martha", False,"1111", "ABC")
+	{{controller.loadEmployeeList("ABC")}}</br></br>
+	<strong> Load List of Stores</strong>: {{controller.loadStoreList()}}</br></br>
+	
 	
 	
 
