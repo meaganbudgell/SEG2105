@@ -9,7 +9,7 @@ class Store (SQLObject):
 	employees = RelatedJoin('Employee')
 	shifts = RelatedJoin('Shift')
 	deadline=shelve.open("deadline.shelve")
-	deadline[0]=0	
+	deadline["deadline"]=0	
 	
 		
 	def _get_dict(self):
