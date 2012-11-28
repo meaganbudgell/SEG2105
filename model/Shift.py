@@ -6,8 +6,9 @@ class Shift (SQLObject):
 	startTime = DateTimeCol()
 	endTime = DateTimeCol()
 	employee = ForeignKey('Employee')
-	day = ForeignKey('Day')
+	store = ForeignKey('Store')
 	isPreset = BoolCol(default=False)
+	day = IntCol()
 
 		
 	def _get_dict(self):

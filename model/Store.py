@@ -6,7 +6,7 @@ from common import *
 class Store (SQLObject):
 	name = StringCol()
 	employees = RelatedJoin('Employee')
-	days = RelatedJoin('Day')
+	shiftss = RelatedJoin('Shift')
 	
 		
 	def _get_dict(self):

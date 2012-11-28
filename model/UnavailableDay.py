@@ -3,7 +3,7 @@ from common import *
 
 
 class UnavailableDay(SQLObject):
-	dayNumber = IntCol()
+	day = IntCol()
 	employee = ForeignKey ('Employee')
 
 		# This converts the datetime object into the "day number"

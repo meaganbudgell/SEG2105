@@ -56,15 +56,15 @@ def loadSchedule(employeeName):
 def checkSchedule(date):
 	pass
 def matchEmployeeName(employeeName):
-	try
+	try:
 		employee = Employee.select(Employee.q.name == employeeName)[0]
 		return employee
-	except IndexError e:
+	except IndexError, e:
 		return None
 
 def loadNotifications(employeeName):
 	# Return all of the notifications
-	employee=
+	pass
 
 def loadRequests(name):
 	# Return all of the requests	
@@ -101,10 +101,7 @@ def loadEmployeeList(storeName):
 	result = dict()
 	result["items"]=[x.dict for x in store.employees]
 	return result
-<<<<<<< Updated upstream
-=======
-		
->>>>>>> Stashed changes
+
 
 def loadStoreList():
 	# Returns all of the stores
@@ -124,6 +121,7 @@ def addEmployeeToShift(employee, shift_id):
 	shift_id.employee = employee
 
 def checkAvailableEmployees(shift_id):
+
 	pass
 
 def addShiftToDay(shift_id, day_id):
