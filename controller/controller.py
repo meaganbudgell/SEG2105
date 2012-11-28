@@ -132,11 +132,6 @@ def removeShiftFromDay(shift_id, day_id):
 	# Removes the given shift from the given day
 	day_id.removeShift(shift_id)
 
-def loadDay(day_id):
-	# Returns the day with the corresponding ID
-	day = Day.select(day_id)
-	return day._get_dict()
-
 def addUnavailableDay(day_id):
 	# Creates a new UnavailableDay
 	ud = UnavailableDay(dayNumber = day_id)

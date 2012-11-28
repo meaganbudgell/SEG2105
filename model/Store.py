@@ -1,12 +1,15 @@
 from sqlobject import *
 from common import *
+import shelve
 
 # Could add more store info here, but don't see the use
 # for the current application
 class Store (SQLObject):
 	name = StringCol()
 	employees = RelatedJoin('Employee')
-	shiftss = RelatedJoin('Shift')
+	shifts = RelatedJoin('Shift')
+	deadline=shelve.open("deadline.shelve")
+	deadline[0]=0	
 	
 		
 	def _get_dict(self):
