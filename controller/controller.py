@@ -95,7 +95,7 @@ def checkEmployeeLogin():
 	eName=request.json["eName"]
 	loginCode=request.json["loginCode"]
 	employee= Employee.select(Employee.q.name==eName)[0]
-	return employee.checkLogin(loginCode)
+	return dict(result=employee.checkLogin(loginCode))
 
 
 @app.get("/checkSchedule/")#returns the day numbers that are incomplete
