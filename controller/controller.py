@@ -1,6 +1,15 @@
 from model import *
 import calendar
 
+def addDayToShift(shift_id, day):
+	shift=Shift.select(Shift.q.id==shift_id)[0]
+	shift.addDay(day)
+
+def addEmployeeToShift(shift_id, eName):
+	employee=Employee.select(Employee.q.name==eName)[0]
+	shift=Shift.select(Shift.q.id==shift_id)[0]
+	shift.addEmployee(employee)
+
 def addEmployeeToStore(sName, eName):
 	store = Store.select(Store.q.name == sName)[0]
 	employee=Employee.select(Employee.q.name==eName)[0]
@@ -15,6 +24,10 @@ def addTimeOffRequest(employee_id, date):
 def addUnavailableDay(day_id, employeeName):
 	employeeID= Employee.select(Employee.q.name==employeeName)[0]
 	ud = UnavailableDay(day = day_id, employee=employeeID.id)
+
+def answerRequest(request_id, answer):
+	request= Request.select(Request.q.id==request_id)[0]
+	request.answer(answer)
 
 def checkAvailableEmployees(shift_id):	
 	s = Shift.select(Shift.q.id == shift_id)[0]
@@ -39,7 +52,11 @@ def checkDaySchedule(day_id, store):
 	except IndexError, e:
 		return None
 
-def checkSchedule(date,storeName)
+def checkEmployeeLogin(eName, loginCode):
+	employee= Employee.select(Employee.q.name==employeeName)[0]
+	employee.checkLogin(loginCode)
+
+def checkSchedule(date,storeName):
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
 	monthName = pyDate.strftime('%B')
 	firstOfMonth = pyDate.replace(day=1)
@@ -94,7 +111,7 @@ def loadStoreList():
 	return result
 
 def loadTemplateShifts():
-	shift = Shift.select(Shift.q.employee == None, and Shift.q.day == None)
+	shift = Shift.select(Shift.q.employee == None,Shift.q.day == None)
 	result = dict()
 	result["items"] = [x.dict for x in shift]
 	return result
@@ -105,8 +122,16 @@ def matchEmployeeName(employeeName):
 		return employee
 	except IndexError, e:
 		return None
+
 def removeDayFromShift(shift_id, day):
-	shift=
+	shift=Shift.select(Shift.q.id==shift_id)[0]
+	shift.removeDay(day)
+
+def removeEmployeeFromShift(shift_id, eName):
+	employee=Employee.select(Employee.q.name==eName)[0]
+	shift=Shift.select(Shift.q.id==shift_id)[0]
+	shift.removeEmployee(employee)
+
 def removeEmployeeFromStore(sName, eName):
 	store = Store.select(Store.q.name == sName)[0]
 	employee=Employee.select(Employee.q.name==eName)[0]
@@ -124,7 +149,8 @@ def removeUnavailableDay(day_id, employeeName):
 def setScheduleDeadline(date):
 	Store.deadline["deadline"] = date
 
-
+def viewNotification (notification_id):
+	notification= Notification.select(Notification.q.id==notification_id)[0]
 
 
 

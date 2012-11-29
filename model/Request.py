@@ -11,5 +11,5 @@ class Request (InheritableSQLObject):
 	def _get_dict(self):
 		return toDict(self)
 
-	def answer(self,isApproved:
+	def answer(self,isApproved):
 		self.isApproved = isApproved	

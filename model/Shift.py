@@ -20,7 +20,7 @@ class Shift (SQLObject):
 	def removeEmployee(self, employee):
 		self.employee=None
 	
-	def addDay(self day_id):
+	def addDay(self, day_id):
 		self.day=day_id
 
 	#This means the Shift itself is deleted.
