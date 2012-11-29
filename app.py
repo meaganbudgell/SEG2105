@@ -4,7 +4,8 @@ from sqlobject import *
 from model import *
 import model
 import sys, os
-
+import bottle
+bottle.debug(True)
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
 connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
