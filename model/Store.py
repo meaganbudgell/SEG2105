@@ -1,6 +1,7 @@
 from sqlobject import *
 from common import *
 import shelve
+from datetime import *
 
 class Store (SQLObject):
 	name = StringCol()
@@ -20,17 +21,17 @@ class Store (SQLObject):
 		return time.strptime(self.closeHour)
 	
 	def checkSchedule(self,shifts):
-		for i, val in enumerate(s):
+		for i, val in enumerate(shifts):
 			try:
-				if (s[i].endTime<= s[i+1].startTime):
+				if (shifts[i].endTime<= shifts[i+1].startTime):
 					pass
 				else:
 					return False	
 			except IndexError, e:
-				if (s[i].endTime==self.closeHour):
+				if (shifts[i].endTime==self.closeHour):
 					return True
 
-		if(s[0].startTime==self.openHour):		
+		if(shifts[0].startTime==self.openHour):		
 			return True
 		else:
 			return False
