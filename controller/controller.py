@@ -94,6 +94,7 @@ def checkEmployeeLogin():
 def checkSchedule():
 	date=request.json.date
 	sName=request.json.sName
+
 	store=Store.select(Store.q.name==sName)[0]
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
 	firstOfMonthDayInYear= int(firstOfMonth.strftime('%j'))

@@ -1,5 +1,5 @@
-from bottle import Bottle, run, template,view, default_app
-from controller import *
+from bottle import Bottle, run, template,view, default_app,route, static_file
+
 from sqlobject import *
 from model import *
 import model
@@ -24,14 +24,26 @@ while not done:
 #Setting up Devel Server
 app=Bottle()
 
+from controller import *
+
+@app.route("/index")
+def function():
+	return static_file("index.html", root='./views')
+
+@app.route("/static/<extension>/<filename>")
+def serveStatic(extension,filename):
+	x=extension
+	x+='/'
+	x+=filename	
+	return static_file(x, root = "./views")
 #Test Page
-@app.get("/testPage")
-@view("testPage")
-def functionTester():
-	for i in (TimeOff, Request, Notification, Shift,UnavailableDay,Employee , Store):	
-		for x in i.select():
-			x.destroySelf()
-	return dict(controller=controller, model=model)
+#@app.get("/testPage")
+#@view("testPage")
+#def functionTester():
+#	for i in (TimeOff, Request, Notification, Shift,UnavailableDay,Employee , Store):	
+#		for x in i.select():
+#			x.destroySelf()
+#	return dict(controller=controller, model=model)
 
 run (app,host="localhost", port=8080)
 

@@ -10,10 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="/static/css/normalize.min.css">
-        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
 
-        <script src="/static/js/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 	
     </head>
     <body>
@@ -23,8 +23,6 @@
 
 	<div id ="backPanel">
 
-		<!-- sections signify a new area of the page, divs are to implement styles on block-level elements
-		spans are for inside of div styles. -->
 
 		<section id = loginPanel>
 			<!-- This is lazy, I'll fix it later and NOT forget.-->
@@ -111,6 +109,6 @@
 
     </body>
 	<!-- JS at bottom for faster page loading -->
-	<script src = "/static/js/jquery-1.8.3.min.js"></script>
-	<script src = "/static/js/main.js"></script>
+	<script src = "js/vendor/jquery-1.8.3.min.js"></script>
+	<script src = "js/main.js"></script>
 </html>

@@ -1,10 +1,23 @@
 $(document).ready(function(){
 //Buttons in order of appearance
-
+	
 	$('#loginButton').click(function(){
-		$('#loginPanel').hide();
-		$('#mainContentPanel').show();
-		$('#schedulePanel').show();
+		var datastring= { 'eName':$('#loginName').val(), 'loginCode':$('#loginPassword').val()}
+		console.log(datastring);
+		$.get("checkEmployeeLogin/", datastring, function(result){
+			console.log(result);
+			if (result == True)
+			{
+				$('#loginPanel').hide();
+				$('#mainContentPanel').show();
+				$('#schedulePanel').show();
+			}
+			else
+			{
+			//To Be Implemented: Error Message
+			}
+		});
+		
 	});
 	$('#logoutBox').click(function(){
 		$('#loginPanel').show();
@@ -36,6 +49,8 @@ $(document).ready(function(){
 		$('#deadlinePanel').show();
 		$('#schedulePanel').hide();
 	});
+
+
 	
 
 });
