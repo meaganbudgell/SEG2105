@@ -121,7 +121,7 @@ def checkSchedule():
 	
 @app.get("/loadSchedule/")
 def loadSchedule():
-	date=request.json.date
+	date=request.json["date"]
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
 	result=dict()
 	result["monthName"] = pyDate.strftime('%B')

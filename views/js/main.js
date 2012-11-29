@@ -5,12 +5,17 @@ $(document).ready(function(){
 function loadManagerUI(eName){
 	//get todays date
 	var date= new Date();
-	var datastring={'date':date}
+	date.toISOString();
 	console.log(date);
-	$.get("/loadSchedule/", datastring, function(result){
-	console.log(result);
-
-	});
+	 $.ajax ({
+		   url: "/loadSchedule/",
+		   type: "GET",
+		   data: JSON.stringify({'date':date}),
+		   dataType: "json",
+		   contentType: "application/json; charset=utf-8",
+		   success: function(result){
+			console.log(result);
+		}});
 
 
 }
