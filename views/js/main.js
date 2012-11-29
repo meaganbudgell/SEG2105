@@ -12,14 +12,18 @@ function loadManagerUI(eName){
 
 	});
 
+
 }
 	$('#loginButton').click(function(){
 		var eName=$('#loginName').val();
-		var datastring= { 'eName':eName, 'loginCode':$('#loginPassword').val()}
-		console.log(datastring);
-		$.get("/checkEmployeeLogin/", datastring, function(result){
-			console.log(result);
-			if (result == "True")
+		 $.ajax ({
+		   url: "/checkEmployeeLogin/",
+		   type: "POST",
+		   data: JSON.stringify({'eName':eName, 'loginCode':$('#loginPassword').val()}),
+		   dataType: "json",
+		   contentType: "application/json; charset=utf-8",
+		   success: function(){
+			if (result["result"] ==  true)
 			{	
 				
 				loadManagerUI(eName);
@@ -31,7 +35,7 @@ function loadManagerUI(eName){
 			{
 			$("#loginForm").append("</br>Invalid Login: Please Try Again");
 			}
-		});
+		}});
 		
 	});
 

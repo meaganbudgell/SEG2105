@@ -90,13 +90,13 @@ def checkDaySchedule(day, store):
 	except IndexError, e:
 		return None
 
-@app.get("/checkEmployeeLogin/")
+@app.post("/checkEmployeeLogin/")
 def checkEmployeeLogin():
 	
 		eName=request.json["eName"]
 		loginCode=request.json["loginCode"]
 		employee= Employee.select(Employee.q.name==employeeName)[0]
-		return employee.checkLogin(loginCode)
+		return dict(employee.checkLogin(loginCode))
 	
 
 @app.get("/checkSchedule/")#returns the day numbers that are incomplete
