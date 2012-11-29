@@ -72,6 +72,10 @@ p{margin:0px;}
 .taskBox:active, .notificationBox:active{
 	background-color:#CCC;
 }
+.weekText{
+	margin-right:39px;
+	margin-left:18px;
+}
 
 #backPanel{
 	background-color:white;
@@ -164,6 +168,9 @@ p{margin:0px;}
 }
 
 #shiftManagementPanel{
+	display:none;
+}
+#templateDayBox{
 	display:none;
 }
 #topBar{

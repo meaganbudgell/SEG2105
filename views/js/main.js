@@ -1,9 +1,7 @@
 $(document).ready(function(){
 
-//Buttons in order of appearance
 	
 function loadManagerUI(eName){
-	//get todays date
 	var date= new Date();
 	date.toISOString();
 	console.log(date);
@@ -15,10 +13,16 @@ function loadManagerUI(eName){
 		   contentType: "application/json; charset=utf-8",
 		   success: function(result){
 			console.log(result);
-		for (var i =0;i <= result["firstOfMonthWeekDay"];i++)
+	
+		for (var i =0;i < result["firstOfMonthWeekDay"]-1;i++)
 		{
-			var parent=$(".dayBox").parent();
-			$(".dayBox").clone().appendTo(parent);
+			$("#templateDayBox").clone().removeAttr('id').remove('display').css('background-color', '#DDD').appendTo("#calendarBox");
+		}
+		var i =1;
+		for (var x=result["firstOfMonthDayInYear"]; x<result["lastOfMonthDayInYear"]+1;x++)
+		{
+			$("#templateDayBox").clone().removeAttr('id').remove('display').attr('name', x).html(i).appendTo("#calendarBox");
+			i++;
 		}
 		
 
