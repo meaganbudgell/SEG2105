@@ -1,10 +1,10 @@
 from model import *
 import calendar
 import datetime
-from bottle import Bottle, run, template,view
-import default_app
+from bottle import Bottle, run, template,view, default_app
 
-app=default_app()
+
+app=Bottle()
 
 @app.post("/addDayToShift/")
 def addDayToShift():
@@ -90,17 +90,39 @@ def checkEmployeeLogin():
 	employee= Employee.select(Employee.q.name==employeeName)[0]
 	return employee.checkLogin(loginCode)
 
-@app.get("/checkSchedule/")
+@app.get("/checkSchedule/")#returns the day numbers that are incomplete
 def checkSchedule():
 	date=request.json.date
 	sName=request.json.sName
+	store=Store.select(Store.q.name==sName)[0]
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
-	monthName = pyDate.strftime('%B')
-	firstOfMonth = pyDate.replace(day=1)
-	lastOfMonth = firstOfMonth.replace(month=pyDate.month+1) - datetime.timedelta(days=1)
-	firstOfMonthDayInYear = int(firstOfMonth.strftime('%j'))
+	firstOfMonthDayInYear= int(firstOfMonth.strftime('%j'))
 	lastOfMonthDayInYear = int(lastOfMonth.strftime('%j'))
-	firstOfMonthWeekDay = int(firstOfMonth.strftime('%w'))
+	result=dict()
+	x=firstOfMonthDayInYear
+	i=0
+	while (x != (lastofMonthDayInYear+1)):
+		shifts=Shift.select(Shift.q.day==x, Shift.q.store==store.id)
+		checkDay=store.checkSchedule(shifts)
+		if (checkDay==False):
+			result.append(x)
+		else:
+			pass
+	return result
+	
+@app.get("/loadSchedule/")
+def loadSchedule():
+	date=request.json.date
+	sName=request.json.date
+	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
+	result=dict()
+	result["monthName"] = pyDate.strftime('%B')
+	result["firstOfMonth"] = pyDate.replace(day=1)
+	result["lastOfMonth"] = firstOfMonth.replace(month=pyDate.month+1) - datetime.timedelta(days=1)
+	result["firstOfMonthDayInYear"]= int(firstOfMonth.strftime('%j'))
+	result["lastOfMonthDayInYear"] = int(lastOfMonth.strftime('%j'))
+	result["firstOfMonthWeekDay"] = int(firstOfMonth.strftime('%w'))
+	return result	
 
 @app.post("/fireEmployee/")
 def fireEmployee():

@@ -1,10 +1,10 @@
-from bottle import Bottle, run, template,view
+from bottle import Bottle, run, template,view, default_app
 from controller import *
 from sqlobject import *
 from model import *
 import model
 import sys, os
-import default_app
+
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
 connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
@@ -22,7 +22,7 @@ while not done:
 		pass
 
 #Setting up Devel Server
-app=default_app()
+app=Bottle()
 
 #Test Page
 @app.get("/testPage")
