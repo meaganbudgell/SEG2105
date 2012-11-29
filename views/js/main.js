@@ -22,7 +22,7 @@ function loadManagerUI(eName){
 		   data: JSON.stringify({'eName':eName, 'loginCode':$('#loginPassword').val()}),
 		   dataType: "json",
 		   contentType: "application/json; charset=utf-8",
-		   success: function(){
+		   success: function(result){
 			if (result["result"] ==  true)
 			{	
 				
