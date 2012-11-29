@@ -10,3 +10,6 @@ class Request (InheritableSQLObject):
 		
 	def _get_dict(self):
 		return toDict(self)
+
+	def answerRequest(self,isApproved:
+		self.isApproved = isApproved	

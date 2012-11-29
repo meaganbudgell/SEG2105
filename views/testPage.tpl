@@ -29,7 +29,10 @@
 	<strong> Load List of Stores</strong>: {{controller.loadStoreList()}}</br></br>
 	
 	
-	
+	def getMonthDetails(date):
+	pyDate=datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
+	monthName=calendar.month_name(pyDate.date.month())
+	dayNameStart=pyDate.date.weekday()
 
 
 

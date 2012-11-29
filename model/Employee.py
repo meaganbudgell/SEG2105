@@ -15,3 +15,12 @@ class Employee(SQLObject):
 		
 	def _get_dict(self):
 		return toDict(self)
+
+	def checkLogin(self, inputLogin):
+		if (self.login==inputLogin):
+			return True
+		else:
+			return False
+	
+
+	

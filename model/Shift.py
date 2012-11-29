@@ -13,3 +13,14 @@ class Shift (SQLObject):
 		
 	def _get_dict(self):
 		return toDict(self)
+
+	def addEmployee(self, employee):
+		self.employee=employee.id
+	
+	def addDay(self day_id):
+		self.day=day_id
+
+	#This means the Shift itself is deleted.
+	def removeDayFromShift(self):
+		self.destroySelf()
+	
