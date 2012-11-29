@@ -1,29 +1,46 @@
 $(document).ready(function(){
+
 //Buttons in order of appearance
 	
+function loadManagerUI(eName){
+	//get todays date
+	var date= new Date();
+	var datastring={'date':date}
+	console.log(date);
+	$.get("/loadSchedule/", datastring, function(result){
+	console.log(result);
+
+	});
+
+}
 	$('#loginButton').click(function(){
-		var datastring= { 'eName':$('#loginName').val(), 'loginCode':$('#loginPassword').val()}
+		var eName=$('#loginName').val();
+		var datastring= { 'eName':eName, 'loginCode':$('#loginPassword').val()}
 		console.log(datastring);
-		$.get("checkEmployeeLogin/", datastring, function(result){
+		$.get("/checkEmployeeLogin/", datastring, function(result){
 			console.log(result);
-			if (result == True)
-			{
+			if (result == "True")
+			{	
+				
+				loadManagerUI(eName);
 				$('#loginPanel').hide();
 				$('#mainContentPanel').show();
 				$('#schedulePanel').show();
 			}
 			else
 			{
-			//To Be Implemented: Error Message
+			$("#loginForm").append("</br>Invalid Login: Please Try Again");
 			}
 		});
 		
 	});
+
 	$('#logoutBox').click(function(){
 		$('#loginPanel').show();
 		$('#mainContentPanel').hide();
 		$('#schedulePanel').hide();
 	});
+
 	$('#backToMain').click(function(){
 		//No point in if statements, no matter what we want all hidden except one.
 		$('#employeeManagementPanel').hide();

@@ -1,7 +1,7 @@
 from model import *
 import calendar
 import datetime
-from bottle import Bottle, run, template,view, default_app
+from bottle import Bottle, run, template,view, default_app,get,post,request
 
 
 app=Bottle()
@@ -23,11 +23,18 @@ def addEmployeeToShift():
 
 @app.post("/addEmployeeToStore/")
 def addEmployeeToStore():
-	sName=request.json.sName
-	eName=request.json.eName
-	store = Store.select(Store.q.name == sName)[0]
-	employee=Employee.select(Employee.q.name==eName)[0]
-	store.addEmployee(employee.id)
+	try:
+		sName=request.json.sName
+		eName=request.params.eName
+		store = Store.select(Store.q.name == sName)[0]
+		employee=Employee.select(Employee.q.name==eName)[0]
+		store.addEmployee(employee.id)
+	except AttributeError,e:
+		eName=request.params.eName
+		employee=Employee.select(Employee.q.name==eName)[0]
+		stores=Store.select()
+		for x in stores:
+			x.addEmployee(employee.id)
 
 @app.post("/addTemplateShift/")
 def addTemplateShift():
@@ -85,10 +92,12 @@ def checkDaySchedule(day, store):
 
 @app.get("/checkEmployeeLogin/")
 def checkEmployeeLogin():
-	eName=request.json.eName
-	loginCode=request.json.loginCode
-	employee= Employee.select(Employee.q.name==employeeName)[0]
-	return employee.checkLogin(loginCode)
+	
+		eName=request.json["eName"]
+		loginCode=request.json["loginCode"]
+		employee= Employee.select(Employee.q.name==employeeName)[0]
+		return employee.checkLogin(loginCode)
+	
 
 @app.get("/checkSchedule/")#returns the day numbers that are incomplete
 def checkSchedule():
@@ -114,7 +123,6 @@ def checkSchedule():
 @app.get("/loadSchedule/")
 def loadSchedule():
 	date=request.json.date
-	sName=request.json.date
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
 	result=dict()
 	result["monthName"] = pyDate.strftime('%B')
@@ -123,8 +131,18 @@ def loadSchedule():
 	result["firstOfMonthDayInYear"]= int(firstOfMonth.strftime('%j'))
 	result["lastOfMonthDayInYear"] = int(lastOfMonth.strftime('%j'))
 	result["firstOfMonthWeekDay"] = int(firstOfMonth.strftime('%w'))
+	
 	return result	
 
+@app.get("/loadShifts/")
+def loadShifts():
+	sName=request.json.sName
+	day=request.json.day
+	store=Store.select(Store.q.name==sName)[0]
+	return store.loadShifts(day)
+		
+	
+	
 @app.post("/fireEmployee/")
 def fireEmployee():
 	eName=request.json.eName
