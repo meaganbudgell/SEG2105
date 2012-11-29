@@ -9,7 +9,7 @@ function loadManagerUI(eName){
 	console.log(date);
 	 $.ajax ({
 		   url: "/loadSchedule/",
-		   type: "GET",
+		   type: "POST",
 		   data: JSON.stringify({'date':date}),
 		   dataType: "json",
 		   contentType: "application/json; charset=utf-8",

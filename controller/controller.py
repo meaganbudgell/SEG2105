@@ -119,17 +119,17 @@ def checkSchedule():
 			pass
 	return result
 	
-@app.get("/loadSchedule/")
+@app.post("/loadSchedule/")
 def loadSchedule():
 	date=request.json["date"]
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
 	result=dict()
 	result["monthName"] = pyDate.strftime('%B')
-	result["firstOfMonth"] = pyDate.replace(day=1)
-	result["lastOfMonth"] = firstOfMonth.replace(month=pyDate.month+1) - datetime.timedelta(days=1)
-	result["firstOfMonthDayInYear"]= int(firstOfMonth.strftime('%j'))
-	result["lastOfMonthDayInYear"] = int(lastOfMonth.strftime('%j'))
-	result["firstOfMonthWeekDay"] = int(firstOfMonth.strftime('%w'))
+	result["firstOfMonth"] = (pyDate.replace(day=1)).isoformat()
+	result["lastOfMonth"] = (result["firstOfMonth"].replace(month=pyDate.month+1) - datetime.timedelta(days=1)).isoformat()
+	result["firstOfMonthDayInYear"]= int(result["firstOfMonth"].strftime('%j'))
+	result["lastOfMonthDayInYear"] = int(result["lastOfMonth"].strftime('%j'))
+	result["firstOfMonthWeekDay"] = int(result["firstOfMonth"].strftime('%w'))
 	
 	return result	
 
