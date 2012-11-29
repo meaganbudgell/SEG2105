@@ -4,6 +4,7 @@ from sqlobject import *
 from model import *
 import model
 import sys, os
+import default_app
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
 connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
@@ -21,7 +22,7 @@ while not done:
 		pass
 
 #Setting up Devel Server
-app=Bottle()
+app=default_app()
 
 #Test Page
 @app.get("/testPage")
