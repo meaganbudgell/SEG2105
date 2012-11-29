@@ -15,6 +15,16 @@ function loadManagerUI(eName){
 		   contentType: "application/json; charset=utf-8",
 		   success: function(result){
 			console.log(result);
+		for (var i =0;i <= result["firstOfMonthWeekDay"];i++)
+		{
+			var parent=$(".dayBox").parent();
+			$(".dayBox").clone().appendTo(parent);
+		}
+		
+
+
+
+
 		}});
 
 
@@ -31,10 +41,11 @@ function loadManagerUI(eName){
 			if (result["result"] ==  true)
 			{	
 				
-				loadManagerUI(eName);
+				
 				$('#loginPanel').hide();
 				$('#mainContentPanel').show();
 				$('#schedulePanel').show();
+				loadManagerUI(eName);
 			}
 			else
 			{
