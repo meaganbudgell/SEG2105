@@ -54,7 +54,7 @@ def checkDaySchedule(day_id, store):
 
 def checkEmployeeLogin(eName, loginCode):
 	employee= Employee.select(Employee.q.name==employeeName)[0]
-	employee.checkLogin(loginCode)
+	return employee.checkLogin(loginCode)
 
 def checkSchedule(date,storeName):
 	pyDate=datetime.datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%fZ')
