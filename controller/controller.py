@@ -126,10 +126,10 @@ def loadSchedule():
 	result=dict()
 	result["monthName"] = pyDate.strftime('%B')
 	result["firstOfMonth"] = (pyDate.replace(day=1)).isoformat()
-	result["lastOfMonth"] = (result["firstOfMonth"].replace(month=pyDate.month+1) - datetime.timedelta(days=1)).isoformat()
-	result["firstOfMonthDayInYear"]= int(result["firstOfMonth"].strftime('%j'))
-	result["lastOfMonthDayInYear"] = int(result["lastOfMonth"].strftime('%j'))
-	result["firstOfMonthWeekDay"] = int(result["firstOfMonth"].strftime('%w'))
+	result["lastOfMonth"] = (pyDate.replace(day=calendar.monthrange(pyDate.year, pyDate.month)[1])).isoformat()
+	result["firstOfMonthDayInYear"]= int((pyDate.replace(day=1)).strftime('%j'))
+	result["lastOfMonthDayInYear"] = int((pyDate.replace(day=calendar.monthrange(pyDate.year, pyDate.month)[1])).strftime('%j'))
+	result["firstOfMonthWeekDay"] = int((pyDate.replace(day=1)).strftime('%w'))
 	
 	return result	
 
