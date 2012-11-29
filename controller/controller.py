@@ -92,12 +92,11 @@ def checkDaySchedule(day, store):
 
 @app.post("/checkEmployeeLogin/")
 def checkEmployeeLogin():
-	
-		eName=request.json["eName"]
-		loginCode=request.json["loginCode"]
-		employee= Employee.select(Employee.q.name==employeeName)[0]
-		return dict(employee.checkLogin(loginCode))
-	
+	eName=request.json["eName"]
+	loginCode=request.json["loginCode"]
+	employee= Employee.select(Employee.q.name==eName)[0]
+	return dict(employee.checkLogin(loginCode))
+
 
 @app.get("/checkSchedule/")#returns the day numbers that are incomplete
 def checkSchedule():
