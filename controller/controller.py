@@ -146,8 +146,6 @@ def loadShifts():
 	day=request.json["day"]
 	store=Store.select(Store.q.name==sName)[0]
 	return store.loadShifts(day)
-		
-	
 	
 @app.post("/fireEmployee/")
 def fireEmployee():
@@ -234,6 +232,7 @@ def removeEmployeeFromStore():
 	store = Store.select(Store.q.name == sName)[0]
 	employee=Employee.select(Employee.q.name==eName)[0]
 	store.removeEmployee(employee.id)
+
 @app.post("/removeStore/")
 def removeStore():
 	store=Store.select(Store.q.name==request.json["sName"])
