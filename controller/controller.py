@@ -35,7 +35,7 @@ def addEmployeeToStore():
 		stores=Store.select()
 		for x in stores:
 			x.addEmployee(employee.id)
-@ap.post("/addStore")
+@ap.post("/addStore/")
 def addStore():
 	store=Store(name=request.json["sName"], openHour=request.json["openHour"], closeHour=request.json["closeHours"])
 	return Store.select(Store.q.name==request.json["sName"])[0].dict
@@ -231,6 +231,14 @@ def removeEmployeeFromStore():
 	store = Store.select(Store.q.name == sName)[0]
 	employee=Employee.select(Employee.q.name==eName)[0]
 	store.removeEmployee(employee.id)
+@app.post("/removeStore/")
+def removeStore():
+	store=Store.select(Store.q.name==request.json["sName"])
+	employees=Employee.select(Employee.q.store==store.id)
+	for x in employees:
+		x.removeStore(store)
+	store.destroySelf()
+	
 
 @app.post("/removeTemplateShift/")
 def removeTemplateShift():
