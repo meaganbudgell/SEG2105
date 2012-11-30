@@ -1,0 +1,49 @@
+These cases depend on cURL and Python being installed. 
+All tests should be run from a terminal in the root directory of the project.
+
+====================================================================================
+1)	Start the server.
+
+Command:	python app.py
+Output:		The server should start and begin listening for connections on port
+			8080.
+
+====================================================================================
+2)	Stop the server.
+
+Command:	Press Ctrl+C while the server is running.
+Output:		The server should stop and user should be returned to the terminal.
+
+====================================================================================
+3)	Add an employee to the database.
+
+Command:	curl -d eName=john http://localhost:8080/hireEmployee/
+Output:		The server should add the employee to the database. The SQL commands
+			will display in the terminal.
+
+====================================================================================
+4)	Add a store to the database.
+
+
+Command:	curl -d 
+
+====================================================================================
+3)	Assign the employee created in 1) to the store.
+
+4)	Make the employee created in 1) the manager.
+
+5)	Hire two new employees (not the manager) and assign them to the store created in 2).
+
+6)	Add a new store to the database.
+
+7)	Hire an employee and assign them to the store created in 6).
+
+8)	List all of the stores.
+
+9)	List all of the employees at the first store.
+
+10)	List all of the employees at the second store.
+
+11)	Fire one of the employees (not the manager) from the first store.
+
+12)	List the employees at the first store.
