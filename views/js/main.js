@@ -73,6 +73,9 @@ function loadManagerUI(eName){
 		$('#deadlinePanel').hide();
 		$('#schedulePanel').hide();
 	});
+	$('#removeEmployee').click(function(){
+
+	});
 	$('#shiftManagementButton').click(function(){
 		$('#employeeManagementPanel').hide();
 		$('#shiftManagementPanel').show();	

@@ -6,12 +6,7 @@ from bottle import Bottle, run, template,view, default_app,get,post,request
 
 app=Bottle()
 
-@app.post("/addDayToShift/")
-def addDayToShift():
-	shift_id=request.json["shift_id"]
-	day=request.json["day"]
-	shift=Shift.select(Shift.q.id==shift_id)[0]
-	shift.addDay(day)
+
 
 @app.post("/addEmployeeToShift/")
 def addEmployeeToShift():
@@ -122,6 +117,14 @@ def checkSchedule():
 		else:
 			pass
 	return result
+
+@app.post("/createShiftFromTemplate/")
+def createShiftFromTemplate():
+	tShiftID=request.json["tShiftID"]
+	day=request.json["day"]
+	template=Shift.select(Shift.q.id==tShiftID)[0]
+	shift=Shift(startTime=template.startTime, endTime=template.endTime)
+	shift.addDay(day)
 	
 @app.post("/loadSchedule/")
 def loadSchedule():
