@@ -15,35 +15,46 @@ Command:	Press Ctrl+C while the server is running.
 Output:		The server should stop and user should be returned to the terminal.
 
 ====================================================================================
-3)	Add an employee to the database.
+3)	Add a store to the database.
 
-Command:	curl -d eName=john http://localhost:8080/hireEmployee/
+Command:	curl -d sName=StoreA -d openHour=2012-01-01T07:00:00-05:00 -d closeHour=2012-01-01T22:00:00-05:00 http://localhost:8080/addStore/
+Output:		The server should add the store to the database. The SQL commands
+			will display in the terminal.
+
+====================================================================================
+
+4)	Add an employee to the database.
+
+Command:	curl -d eName=john -d sName=StoreA -d loginCode=1234 -d isManager=True http://localhost:8080/hireEmployee/
 Output:		The server should add the employee to the database. The SQL commands
 			will display in the terminal.
 
 ====================================================================================
-4)	Add a store to the database.
+5)	Add two more employees and assign them to the store created in 4).
 
-
-Command:	curl -d 
+Commands:	curl -d eName=jane -d sName=StoreA -d loginCode=4567 -d isManager=False http://localhost:8080/hireEmployee/
+			curl -d eName=bob -d sName=StoreA -d loginCode=8901 -d isManager=False http://localhost:8080/hireEmployee/		
+Output:		The server should add the employees to the database. The SQL commands
+			will display in the terminal.
 
 ====================================================================================
-3)	Assign the employee created in 1) to the store.
+6)	Display a list of stores.
 
-4)	Make the employee created in 1) the manager.
+Command:	curl http://localhost:8080/loadStoreList/
+Output:		A list of all created stores should be displayed.
 
-5)	Hire two new employees (not the manager) and assign them to the store created in 2).
+====================================================================================
+7)	Display a list of employees at the store created in 3).
 
-6)	Add a new store to the database.
+Command:	curl -d sName=StoreA http://localhost:8080/loadStoreEmployees
+Output:		A list of the employees at the store created in 3).
 
-7)	Hire an employee and assign them to the store created in 6).
+====================================================================================
+8)	Create a template shift.
 
-8)	List all of the stores.
-
-9)	List all of the employees at the first store.
-
-10)	List all of the employees at the second store.
-
-11)	Fire one of the employees (not the manager) from the first store.
-
-12)	List the employees at the first store.
+Command:	curl -d inputStartTime=2012-01-01T07:00:00-05:00 -d inputEndTime2012-01-01T15:00:00-05:00 http://localhost:8080/addTemplateShift/
+Output:		The server should add the shift to the database. The SQL commands
+			will display in the terminal.
+			
+=====================================================================================
+9)	Create a shift from the template created in 8).
