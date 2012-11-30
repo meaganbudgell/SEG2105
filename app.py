@@ -8,7 +8,7 @@ import bottle
 bottle.debug(True)
 
 #Setup Database Connection <Currently Setup for Meagan's Comp>
-connection = connectionForURI("mysql://root:scr33m0@localhost/SEG2105")
+connection = connectionForURI("mysql://root:jordan13@localhost/SEG2105")
 sqlhub.processConnection= connection
 sqlhub.processConnection.debug = True; sqlhub.processConnection.debugOutput=True
 
