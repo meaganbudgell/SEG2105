@@ -223,7 +223,7 @@ def removeEmployeeFromShift():
 @app.post("/remobeEmployeeFromStore/")
 def removeEmployeeFromStore():
 	sName=request.json["sName"]
-	eName=request.json.["eName"]
+	eName=request.json["eName"]
 	store = Store.select(Store.q.name == sName)[0]
 	employee=Employee.select(Employee.q.name==eName)[0]
 	store.removeEmployee(employee.id)
