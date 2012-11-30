@@ -55,6 +55,3 @@ Output:		A list of the employees at the store created in 3).
 Command:	curl -d inputStartTime=2012-01-01T07:00:00-05:00 -d inputEndTime2012-01-01T15:00:00-05:00 http://localhost:8080/addTemplateShift/
 Output:		The server should add the shift to the database. The SQL commands
 			will display in the terminal.
-			
-=====================================================================================
-9)	Create a shift from the template created in 8).
