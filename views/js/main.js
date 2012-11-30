@@ -13,22 +13,17 @@ function loadManagerUI(eName){
 		   contentType: "application/json; charset=utf-8",
 		   success: function(result){
 			console.log(result);
-	
-		for (var i =0;i < result["firstOfMonthWeekDay"]-1;i++)
-		{
-			$("#templateDayBox").clone().removeAttr('id').remove('display').css('background-color', '#DDD').appendTo("#calendarBox");
-		}
-		var i =1;
-		for (var x=result["firstOfMonthDayInYear"]; x<result["lastOfMonthDayInYear"]+1;x++)
-		{
-			$("#templateDayBox").clone().removeAttr('id').remove('display').attr('name', x).html(i).appendTo("#calendarBox");
-			i++;
-		}
-		
-
-
-
-
+			$('#monthText').html(result["monthName"]);
+			for (var i =0;i < result["firstOfMonthWeekDay"]-1;i++)
+			{
+				$("#templateDayBox").clone().removeAttr('id').remove('display').css('background-color', '#DDD').appendTo("#calendarBox");
+			}
+			var i =1;
+			for (var x=result["firstOfMonthDayInYear"]; x<result["lastOfMonthDayInYear"]+1;x++)
+			{
+				$("#templateDayBox").clone().removeAttr('id').remove('display').attr('name', x).html(i).appendTo("#calendarBox");
+				i++;
+			}
 		}});
 
 

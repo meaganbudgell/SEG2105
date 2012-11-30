@@ -160,6 +160,10 @@ p{margin:0px;}
 	display:none;
 
 }
+#monthText{
+	font-size:22px;
+	font-weight:bolder;
+}
 #scheduleHeader{
 	text-align:center;
 }
