@@ -35,6 +35,10 @@ def addEmployeeToStore():
 		stores=Store.select()
 		for x in stores:
 			x.addEmployee(employee.id)
+@ap.post("/addStore")
+def addStore():
+	store=Store(name=request.json["sName"], openHour=request.json["openHour"], closeHour=request.json["closeHours"])
+	return Store.select(Store.q.name==request.json["sName"])[0].dict
 
 @app.post("/addTemplateShift/")
 def addTemplateShift():
