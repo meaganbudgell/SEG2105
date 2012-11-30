@@ -30,7 +30,7 @@ def addEmployeeToStore():
 		employee=Employee.select(Employee.q.name==eName)[0]
 		store.addEmployee(employee.id)
 	except AttributeError,e:
-		eName=request.params.eName
+		eName=request.json["eName"]
 		employee=Employee.select(Employee.q.name==eName)[0]
 		stores=Store.select()
 		for x in stores:
@@ -220,7 +220,7 @@ def removeEmployeeFromShift():
 	shift=Shift.select(Shift.q.id==shift_id)[0]
 	shift.removeEmployee(employee)
 
-@app.post("/remobeEmployeeFromStore/")
+@app.post("/removeEmployeeFromStore/")
 def removeEmployeeFromStore():
 	sName=request.json["sName"]
 	eName=request.json.["eName"]
